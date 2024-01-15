@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 Cliente #{numero}
+    #notificationcard
+    script.
+      const socket = io('http://localhost:8877?numero=#{numero}');
+      socket.on('notification', (message) => {
+      document.getElementById('notificationcard').innerText = message;
+      });
